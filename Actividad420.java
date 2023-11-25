@@ -11,25 +11,27 @@ public class Actividad420 {
         introduccion();
         double InteresAnual =obtenirInteresAnual();
         double capitalInvertida=obtenirCapitalAInvertir();
-
-        for (int any = 0; any < 15; any++) {
-            double ajudaGovern=obtenirAjudaGovern(capitalInvertida);
-            double futur=obtenirValorFuturInversio(capitalInvertida,InteresAnual,any);
-            
-        }
-
+        double interesMensual=interesMensual(InteresAnual);
+        double capitalAFuturo=obtenirValorFuturInversio(capitalInvertida,interesMensual,16);
 
 
     }
     //Obté el valor de la inversió @capitalInvertit transcorreguts @numAnys a un interés mensual de @interesMensual
 
     public static double obtenirValorFuturInversio(double capitalInvertit, double interesMensual, int numAnys) {
-        double paso1= numAnys*12;
-        double paso2=1+interesMensual;
-        double paso3=Math.pow(paso1,paso2);
-        double valorFutur = capitalInvertit * paso3;
-        System.out.println(valorFutur);
-        return valorFutur;
+        double multAños;
+        double mensula2;
+        double caclculoMensulal;
+        double calculoFinal = 0;
+
+        for (int i = 0; i < numAnys; i++) {
+             multAños=i*12;
+             mensula2=(1+interesMensual);
+             caclculoMensulal=Math.pow(mensula2,multAños);
+             calculoFinal=capitalInvertit*caclculoMensulal;
+            System.out.println(calculoFinal);
+        }
+        return calculoFinal;
     }
 
     // Obté el total aportat pel govern en funció de @capitalInverti
@@ -37,11 +39,11 @@ public class Actividad420 {
     public static double obtenirAjudaGovern(double capitalInvertit) {
 
         if (capitalInvertit>10000 && capitalInvertit<50000){
-            return capitalInvertit+25;
+            return 25;
         } else if (capitalInvertit>50000) {
-            return capitalInvertit+50;
+            return 50;
         }else {
-            return capitalInvertit;
+            return 0;
         }
     }
 
@@ -67,15 +69,13 @@ public class Actividad420 {
 
         String primeraLinea="Any     Valor Futur(+ajuda)         Indicació";
         String segundaLinea="=============================================";
-        for (int i = 0; i < 100; i++) {
-            System.out.println(i+"      ");
-        }
-        return primeraLinea;
+        return "hola";
     }
 
     public static void introduccion() {
         System.out.println("Batoi INVERSIONS 2021");
         System.out.println("=====================");
+
     }
 
     public static int pedirNumero(String mensaje) {
@@ -104,6 +104,11 @@ public class Actividad420 {
             }
             teclado.next();
         } while (true);
+    }
+    public static double interesMensual(double interesAnual ){
+        double anual1=interesAnual/100;
+        double conversión=anual1/12;
+        return conversión;
     }
 
 }
